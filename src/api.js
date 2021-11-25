@@ -106,6 +106,10 @@ exports.initAPI = function () {
 				this.checkFeedbacks('skippableStatus')
 				this.checkFeedbacks('adTriggerStatus')
 				this.checkFeedbacks('targetsStatus')
+				if(this.data.apiVersion > 1) {
+					this.checkFeedbacks('breakingNewsStatus')
+				}
+
 			} else if (message.messageId === 'ad_triggered' || message._messageId === 'ad_triggered') {
 				this.data.adRunning = message.adLength
 				if (this.adTimeout) {

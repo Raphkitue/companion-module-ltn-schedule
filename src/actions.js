@@ -113,7 +113,7 @@ exports.executeAction = function (action) {
 			}
 			break
 		case 'breaking_news':
-			if (this.data.breakingNewsRunning) {
+			if (!this.data.breakingNewsRunning) {
 					apiEndpoint = 'breakingnews/start'
 					cmd = ''
 			}

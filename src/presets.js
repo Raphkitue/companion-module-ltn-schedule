@@ -145,7 +145,7 @@ exports.initPresets = function () {
 				text: 'Toggle Breaking News',
 				size: pstSize,
 				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
+				bgcolor: self.rgb(91, 198, 233),
 			},
 			actions: [
 				{
@@ -155,6 +155,9 @@ exports.initPresets = function () {
 			feedbacks: [
 				{
 					type: 'breakingNewsStatus',
+					style: {
+						bgcolor: self.rgb(231, 88, 59),
+					}
 				},
 			],
 		})

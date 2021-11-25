@@ -33,12 +33,14 @@ exports.initFeedbacks = function () {
 		}
 	}
 
-	feedbacks.breakingNewsStatus = {
-		type: 'boolean',
-		label: 'Breaking news running status',
-		description: 'Indicates if the breaking news are displayed',
-		style: {
-			bgcolor: red
+	if(this.data.apiVersion > 1) {
+		feedbacks.breakingNewsStatus = {
+			type: 'boolean',
+			label: 'Breaking news running status',
+			description: 'Indicates if the breaking news are displayed',
+			style: {
+				bgcolor: red
+			}
 		}
 	}
 
