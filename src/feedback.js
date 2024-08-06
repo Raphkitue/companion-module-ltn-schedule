@@ -295,7 +295,6 @@ export function initFeedbacks() {
 			},
 		}
 
-		this.log('info', `livestreams ${this.data.livestreams}`)
 		const livestreams = {
 			type: 'dropdown',
 			label: 'Live streams',
@@ -376,6 +375,53 @@ export function initFeedbacks() {
 			callback: ({ options }) => {
 				if (String(this.data.templateInsertStatus) === options.insertStatus) {
 					return true
+				}
+			},
+		}
+	}
+
+	if (this.data.apiVersion >= 7) {
+		feedbacks.syncStatus = {
+			type: 'advanced',
+			name: 'Sync status with redundant system',
+			description: 'Indicates the status of the connection to redundant system(s)',
+			options: [
+				foregroundColor,
+				{
+					type: 'colorpicker',
+					label: 'Sync is not setup',
+					id: 'bgUninitialized',
+					default: darkGrey,
+				},
+				{
+					type: 'colorpicker',
+					label: 'Sync is catching up',
+					id: 'bgCatchingUp',
+					default: yellow,
+				},
+				{
+					type: 'colorpicker',
+					label: 'Sync is established',
+					id: 'bgSynced',
+					default: green,
+				},
+				{
+					type: 'colorpicker',
+					label: 'Sync is in error',
+					id: 'bgError',
+					default: red,
+				},
+			],
+			callback: ({ options }) => {
+				this.log('info', 'syncstatus ' + this.data.syncStatus)
+				if (this.data.syncStatus === 'uninitialized') {
+					return { color: options.fg, bgcolor: options.bgUninitialized }
+				} else if (this.data.syncStatus === 'connecting' || this.data.syncStatus === 'catching_up') {
+					return { color: options.fg, bgcolor: options.bgCatchingUp }
+				} else if (this.data.syncStatus === 'synced') {
+					return { color: options.fg, bgcolor: options.bgSynced }
+				} else {
+					return { color: options.fg, bgcolor: options.bgError }
 				}
 			},
 		}

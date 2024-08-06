@@ -132,7 +132,7 @@ export function initPresets() {
 		},
 	})
 
-	if(this.data.apiVersion >= 6) {
+	if (this.data.apiVersion >= 6) {
 		skipFeedbacks.push({
 			feedbackId: 'nextElementUnavailable',
 			style: {
@@ -470,7 +470,7 @@ export function initPresets() {
 								templatesSelect: 'select',
 								insertSelect: 'next',
 								conflictSelect: 'nothing',
-								skipOnReady: false
+								skipOnReady: false,
 							},
 						},
 					],
@@ -494,6 +494,44 @@ export function initPresets() {
 					},
 					options: {
 						insertStatus: '2',
+					},
+				},
+			],
+		}
+	}
+
+	if (this.data.apiVersion >= 7) {
+		presets.insert_template = {
+			category: 'Commands',
+			type: 'button',
+			name: `Sync status`,
+			options: {},
+			style: {
+				text: `Sync`,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [
+						{
+							actionId: 'resync',
+							options: {},
+						},
+					],
+					up: [],
+				},
+			],
+			feedbacks: [
+				{
+					feedbackId: 'syncStatus',
+					options: {
+						fg: black,
+						bgUninitialized: darkGrey,
+						bgCatchingUp: yellow,
+						bgSynced: green,
+						bgError: red,
 					},
 				},
 			],

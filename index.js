@@ -62,7 +62,8 @@ class LTNScheduleInstance extends InstanceBase {
 			elementsStatuses: {
 				fillId: 0
 			},
-			templateInsertStatus: 0
+			templateInsertStatus: 0,
+			syncStatus: 0
 		}
 
 	
@@ -76,7 +77,14 @@ class LTNScheduleInstance extends InstanceBase {
 		this.config.username = config.username
 		this.config.password = config.password
 
-		this.updateStatus('connecting', 'Connecting')
+		if(this.config.host === '')
+		{
+			this.updateStatus('bad_config', 'Configuration required')
+		}
+		else
+		{
+			this.updateStatus('connecting', 'Connecting')
+		}
 		initAPI.bind(this)()
 		this.actions()
 		this.init_feedbacks()

@@ -255,16 +255,19 @@ export function getActions() {
 			callback: async (event) => {
 				var cmd
 				var apiEndpoint
+				var type
 
 				if (!this.data.overlayEnabled) {
 					apiEndpoint = 'overlay/static/activate'
 					cmd = ''
+					type = "POST"
 				} else {
 					apiEndpoint = 'overlay/static/deactivate'
 					cmd = ''
+					type = "GET"
 				}
 
-				sendAction.bind(this)(apiEndpoint, cmd)
+				sendAction.bind(this)(apiEndpoint, cmd, null, null, type)
 			},
 		}
 
@@ -409,6 +412,23 @@ export function getActions() {
 			},
 		}
 	}
+
+	if (this.data.apiVersion >= 7) {
+		actions.resync = {
+			name: 'Resync systems',
+			options: [],
+			callback: async (event) => {
+				var cmd
+				var apiEndpoint
+
+				apiEndpoint = 'resync'
+				cmd = ''
+
+				sendAction.bind(this)(apiEndpoint, cmd)
+			},
+		}
+	}
+
 
 	return actions
 }
