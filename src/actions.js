@@ -396,7 +396,7 @@ export function getActions() {
 					'template/insert',
 					cmd,
 					() => {
-						if (opt.skipOnRead) {
+						if (opt.skipOnReady) {
 							this.data.templateInsertStatus = 1
 							this.checkFeedbacks('templateInsertStatus')
 							if (this.templateTimeout) {
