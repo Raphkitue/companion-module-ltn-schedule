@@ -213,6 +213,35 @@ export function initPresets() {
 		],
 	}
 
+	var breakingNewsFeedbacks = []
+
+	breakingNewsFeedbacks.push({
+		feedbackId: 'playbackStatus',
+		style: {
+			bgcolor: lightBlue,
+		},
+		options: {},
+	})
+
+	breakingNewsFeedbacks.push({
+		feedbackId: 'breakingNewsStatus',
+		style: {
+			bgcolor: red,
+		},
+		options: {},
+	})
+
+	if(this.data.apiVersion >= 7)
+	{
+		breakingNewsFeedbacks.push({
+			feedbackId: 'breakingLiveBumperStatus',
+			style: {
+				bgcolor: yellow,
+			},
+			options: {},
+		})
+	}
+
 	if (this.data.apiVersion > 1) {
 		presets.toggle_breaking_news = {
 			category: 'Commands',
@@ -239,22 +268,7 @@ export function initPresets() {
 					up: [],
 				},
 			],
-			feedbacks: [
-				{
-					feedbackId: 'playbackStatus',
-					style: {
-						bgcolor: lightBlue,
-					},
-					options: {},
-				},
-				{
-					feedbackId: 'breakingNewsStatus',
-					style: {
-						bgcolor: red,
-					},
-					options: {},
-				},
-			],
+			feedbacks: breakingNewsFeedbacks,
 		}
 	}
 

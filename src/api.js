@@ -102,6 +102,7 @@ export function initAPI() {
 				this.checkFeedbacks('overlayStatus', 'htmlOverlayStatus', 'breakingNewsStatus', 'breakingLiveLivestreamStatus')
 				this.updatePresets()
 			} else if (message.messageId === 'playout_update' || message._messageId === 'playout_update') {
+				this.log('info', 'playout update ' + message)
 				if (this.data.apiVersion > 0) {
 					this.data.playoutRunning = message.activated
 				} else {
@@ -148,9 +149,9 @@ export function initAPI() {
 			) {
 				this.data.breakingNewsCurrentId = message.breakingNewsCurrentId
 				this.data.breakingNewsRunning = message.breakingNewsRunning
+				this.data.bumperRunning = message.postrollStartTimestamp !== -1 || message.prerollStartTimestamp !== -1
 
-				this.checkFeedbacks('breakingNewsStatus')
-				this.checkFeedbacks('breakingLiveLivestreamStatus')
+				this.checkFeedbacks('breakingNewsStatus', 'breakingLiveLivestreamStatus', 'breakingLiveBumperStatus')
 			} else if (message.messageId === 'ad_triggered' || message._messageId === 'ad_triggered') {
 				this.data.adRunning = message.adLength
 				if (this.adTimeout) {

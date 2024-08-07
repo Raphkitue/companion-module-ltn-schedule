@@ -425,6 +425,19 @@ export function initFeedbacks() {
 				}
 			},
 		}
+
+		feedbacks.breakingLiveBumperStatus = {
+			type: 'boolean',
+			name: 'Breaking live bumper running status',
+			description: 'Indicates if a bumper (in or out) is currently running for breaking live',
+			defaultStyle: {
+				bgcolor: yellow,
+			},
+			options: [livestreams],
+			callback: ({ options }) => {
+				return this.data.bumperRunning
+			},
+		}
 	}
 
 	return feedbacks

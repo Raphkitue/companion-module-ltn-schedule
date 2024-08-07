@@ -63,7 +63,8 @@ class LTNScheduleInstance extends InstanceBase {
 				fillId: 0
 			},
 			templateInsertStatus: 0,
-			syncStatus: 0
+			syncStatus: 0,
+			bumperRunning: false,
 		}
 
 	
