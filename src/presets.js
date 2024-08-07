@@ -414,6 +414,38 @@ export function initPresets() {
 
 		this.data.livestreams
 			.map((live) => {
+
+			var liveFeedback = []
+
+			liveFeedback.push({
+				feedbackId: 'playbackStatus',
+				style: {
+					bgcolor: lightBlue,
+				},
+				options: {},
+			})
+
+			liveFeedback.push({
+				feedbackId: 'breakingLiveLivestreamStatus',
+				style: {
+					bgcolor: red,
+				},
+				options: {
+					livestreamSelect: live.id,
+				},
+			})
+
+			if(this.data.apiVersion >= 7)
+			{
+				liveFeedback.push({
+					feedbackId: 'breakingLiveBumperStatus',
+					style: {
+						bgcolor: yellow,
+					},
+					options: {},
+				})
+			}
+
 				return {
 					category: 'Breaking Live',
 					type: 'button',
@@ -438,24 +470,7 @@ export function initPresets() {
 							up: [],
 						},
 					],
-					feedbacks: [
-						{
-							feedbackId: 'playbackStatus',
-							style: {
-								bgcolor: lightBlue,
-							},
-							options: {},
-						},
-						{
-							feedbackId: 'breakingLiveLivestreamStatus',
-							style: {
-								bgcolor: red,
-							},
-							options: {
-								livestreamSelect: live.id,
-							},
-						},
-					],
+					feedbacks: liveFeedback,
 				}
 			})
 			.forEach((element) => {

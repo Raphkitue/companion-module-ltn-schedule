@@ -433,7 +433,7 @@ export function initFeedbacks() {
 			defaultStyle: {
 				bgcolor: yellow,
 			},
-			options: [livestreams],
+			options: [],
 			callback: ({ options }) => {
 				return this.data.bumperRunning
 			},

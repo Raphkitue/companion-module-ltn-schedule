@@ -147,8 +147,9 @@ export function initAPI() {
 				(message.messageId === 'breaking_live_status' || message._messageId === 'breaking_live_status') &&
 				this.data.apiVersion > 6
 			) {
-				this.data.breakingNewsCurrentId = message.breakingNewsCurrentId
-				this.data.breakingNewsRunning = message.breakingNewsRunning
+				this.log('info', 'breaking_live_status received ' + message.breakingLiveId)
+				this.data.breakingNewsCurrentId = message.breakingLiveId
+				this.data.breakingNewsRunning = message.breakingLiveRunning
 				this.data.bumperRunning = message.postrollStartTimestamp !== -1 || message.prerollStartTimestamp !== -1
 
 				this.checkFeedbacks('breakingNewsStatus', 'breakingLiveLivestreamStatus', 'breakingLiveBumperStatus')
@@ -169,7 +170,9 @@ export function initAPI() {
 				this.data.syncStatus = message.redundancyStatus
 				this.checkFeedbacks('syncStatus')
 			} else if (message.messageId === 'livestreamUpdate' || message._messageId === 'livestreamUpdate') {
-				this.data.breakingNewsCurrentId = message.breakingNewsCurrentId
+				if (this.data.apiVersion < 7) {
+					this.data.breakingNewsCurrentId = message.breakingNewsCurrentId
+				}
 				this.data.livestreams = []
 				message.livestreams.forEach((livestream) => {
 					var localLivestream = {}
