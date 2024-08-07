@@ -439,7 +439,7 @@ export function getActions() {
 				var cmd
 				var apiEndpoint
 
-				apiEndpoint = 'resync'
+				apiEndpoint = 'playout/resync'
 				cmd = ''
 
 				sendAction.bind(this)(apiEndpoint, cmd)
