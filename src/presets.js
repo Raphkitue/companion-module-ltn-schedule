@@ -530,7 +530,7 @@ export function initPresets() {
 	}
 
 	if (this.data.apiVersion >= 7) {
-		presets.insert_template = {
+		presets.sync_status = {
 			category: 'Commands',
 			type: 'button',
 			name: `Sync status`,
