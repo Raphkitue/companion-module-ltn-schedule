@@ -213,7 +213,8 @@ export function getActions() {
 				var apiEndpoint
 
 				if (this.data.bumperRunning && this.data.apiVersion >= 7) {
-					
+					apiEndpoint = 'breakinglive/cancelbumper'
+					cmd = ''
 				} else if (
 					!this.data.breakingNewsRunning ||
 					(this.data.apiVersion >= 5 &&
