@@ -12,8 +12,20 @@ export function updateVariables() {
 
 	const now = Date.now();
 	this.setVariableValues({
-		totalRemainingTime: new Date((this.data.startstamp + this.data.endstamp) - now).toISOString().slice(11, 19),
-		totalPlayedTime: new Date(now - this.data.startstamp).toISOString().slice(11, 19),
-		currentRemainingTime: new Date(this.data.currentEndstamp - now).toISOString().slice(11, 19)
+		totalRemainingTime: msToTime((this.data.startstamp + this.data.endstamp) - now),
+		totalPlayedTime: msToTime(now - this.data.startstamp),
+		currentRemainingTime: msToTime(this.data.currentEndstamp - now)
 	})
+}
+
+function msToTime(duration) {
+	var seconds = Math.floor((duration / 1000) % 60),
+	minutes = Math.floor((duration / (1000 * 60)) % 60),
+	hours = Math.floor((duration / (1000 * 60 * 60)));
+
+	hours = (hours < 10) ? "0" + hours : hours;
+	minutes = (minutes < 10) ? "0" + minutes : minutes;
+	seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+	return hours + ":" + minutes + ":" + seconds;
 }
