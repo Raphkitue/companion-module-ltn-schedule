@@ -4,7 +4,7 @@ import { getActions } from './src/actions.js'
 import { initAPI } from './src/api.js'
 import { getConfigFields } from './src/config.js'
 import { initFeedbacks } from './src/feedback.js'
-import { updateVariableDefinitions } from './src/variables.js'
+import { updateVariableDefinitions, updateVariables } from './src/variables.js'
 import { initPresets } from './src/presets.js'
 
 export const lightBlue = combineRgb(91, 198, 233)
@@ -65,10 +65,10 @@ class LTNScheduleInstance extends InstanceBase {
 			templateInsertStatus: 0,
 			syncStatus: 0,
 			bumperRunning: false,
+			startstamp: 0,
+			endstamp: 0,
+			currentEndstamp: 0
 		}
-
-	
-		this.updateVariableDefinitions = updateVariableDefinitions
 	}
 
 	async init(config) {
@@ -89,8 +89,12 @@ class LTNScheduleInstance extends InstanceBase {
 		initAPI.bind(this)()
 		this.actions()
 		this.init_feedbacks()
+
+		updateVariableDefinitions.bind(this)()
+		updateVariables.bind(this)()
+		this.variableUpdates = setInterval(updateVariables.bind(this), 1000)
+
 		initPresets.bind(this)()
-		this.updateVariableDefinitions()
 	}
 
 	// New config saved
@@ -127,6 +131,12 @@ class LTNScheduleInstance extends InstanceBase {
 		if (this.socket) {
 			this.socket.close()
 			delete this.socket
+		}
+
+		if(this.variableUpdates)
+		{
+			clearInterval(this.variableUpdates)
+			delete this.variableUpdates
 		}
 	}
 

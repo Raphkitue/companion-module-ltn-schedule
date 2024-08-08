@@ -101,8 +101,11 @@ export function initAPI() {
 				}
 				this.checkFeedbacks('overlayStatus', 'htmlOverlayStatus', 'breakingNewsStatus', 'breakingLiveLivestreamStatus')
 				this.updatePresets()
+			} else if ((message.messageId === 'statusUpdate' || message._messageId === 'statusUpdate') && this.data.apiVersion >= 7) {
+				this.data.startstamp = message.startStamp
+				this.data.endstamp = message.playoutListLengthMs
+				this.data.currentEndstamp = message.currentElementEnd
 			} else if (message.messageId === 'playout_update' || message._messageId === 'playout_update') {
-				this.log('info', 'playout update ' + message)
 				if (this.data.apiVersion > 0) {
 					this.data.playoutRunning = message.activated
 				} else {
@@ -147,7 +150,6 @@ export function initAPI() {
 				(message.messageId === 'breaking_live_status' || message._messageId === 'breaking_live_status') &&
 				this.data.apiVersion > 6
 			) {
-				this.log('info', 'breaking_live_status received ' + message.breakingLiveId)
 				this.data.breakingNewsCurrentId = message.breakingLiveId
 				this.data.breakingNewsRunning = message.breakingLiveRunning
 				this.data.bumperRunning = message.postrollStartTimestamp !== -1 || message.prerollStartTimestamp !== -1

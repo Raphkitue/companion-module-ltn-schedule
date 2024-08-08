@@ -565,6 +565,66 @@ export function initPresets() {
 				},
 			],
 		}
+
+		presets.total_remaining_time = {
+			category: 'Timers',
+			type: 'button',
+			name: `Total Remaining Time`,
+			options: {},
+			style: {
+				text: `Remaining time\n$(generic-module:totalRemainingTime)`,
+				size: 11,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		}
+
+		presets.total_played_time = {
+			category: 'Timers',
+			type: 'button',
+			name: `Total Played Time`,
+			options: {},
+			style: {
+				text: `Played time\n$(generic-module:totalPlayedTime)`,
+				size: 11,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		}
+
+		presets.current_remaining_time = {
+			category: 'Timers',
+			type: 'button',
+			name: `Current Remaining Time`,
+			options: {},
+			style: {
+				text: `Element time\n$(generic-module:currentRemainingTime)`,
+				size: 11,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		}
 	}
 
 	this.setPresetDefinitions(presets)

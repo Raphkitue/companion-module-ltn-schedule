@@ -459,8 +459,6 @@ function sendAction(apiEndpoint, cmd, callback, errorCallback, requestType) {
 		var req
 		if (requestType === 'POST') {
 			var formData = new FormData()
-
-			this.log('info', 'isPostRequest')
 			req = got.post(requestString, { body: formData })
 		} else {
 			req = got.get(requestString)

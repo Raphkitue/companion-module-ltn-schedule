@@ -413,7 +413,6 @@ export function initFeedbacks() {
 				},
 			],
 			callback: ({ options }) => {
-				this.log('info', 'syncstatus ' + this.data.syncStatus)
 				if (this.data.syncStatus === 'uninitialized') {
 					return { color: options.fg, bgcolor: options.bgUninitialized }
 				} else if (this.data.syncStatus === 'connecting' || this.data.syncStatus === 'catching_up') {
