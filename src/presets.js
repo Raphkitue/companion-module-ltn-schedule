@@ -176,14 +176,21 @@ export function initPresets() {
 		feedbacks: skipFeedbacks,
 	}
 
+	var adName = 'Ad break'
+	var adFontSize = pstSize
+	if (this.data.apiVersion >= 7) {
+		adName = adName + '\n$(generic-module:adRemainingTime)'
+		adFontSize = 14
+	}
+
 	presets.trigger_ad = {
 		category: 'Commands',
 		type: 'button',
 		name: 'Trigger ad',
 		options: {},
 		style: {
-			text: 'Trigger ad',
-			size: pstSize,
+			text: adName,
+			size: adFontSize,
 			color: '16777215',
 			bgcolor: combineRgb(0, 0, 0),
 		},
@@ -231,8 +238,7 @@ export function initPresets() {
 		options: {},
 	})
 
-	if(this.data.apiVersion >= 7)
-	{
+	if (this.data.apiVersion >= 7) {
 		breakingNewsFeedbacks.push({
 			feedbackId: 'breakingLiveBumperStatus',
 			style: {
@@ -414,37 +420,35 @@ export function initPresets() {
 
 		this.data.livestreams
 			.map((live) => {
+				var liveFeedback = []
 
-			var liveFeedback = []
-
-			liveFeedback.push({
-				feedbackId: 'playbackStatus',
-				style: {
-					bgcolor: lightBlue,
-				},
-				options: {},
-			})
-
-			liveFeedback.push({
-				feedbackId: 'breakingLiveLivestreamStatus',
-				style: {
-					bgcolor: red,
-				},
-				options: {
-					livestreamSelect: live.id,
-				},
-			})
-
-			if(this.data.apiVersion >= 7)
-			{
 				liveFeedback.push({
-					feedbackId: 'breakingLiveBumperStatus',
+					feedbackId: 'playbackStatus',
 					style: {
-						bgcolor: yellow,
+						bgcolor: lightBlue,
 					},
 					options: {},
 				})
-			}
+
+				liveFeedback.push({
+					feedbackId: 'breakingLiveLivestreamStatus',
+					style: {
+						bgcolor: red,
+					},
+					options: {
+						livestreamSelect: live.id,
+					},
+				})
+
+				if (this.data.apiVersion >= 7) {
+					liveFeedback.push({
+						feedbackId: 'breakingLiveBumperStatus',
+						style: {
+							bgcolor: yellow,
+						},
+						options: {},
+					})
+				}
 
 				return {
 					category: 'Breaking Live',
@@ -574,7 +578,7 @@ export function initPresets() {
 			style: {
 				text: `Remaining time\n$(generic-module:totalRemainingTime)`,
 				size: 11,
-				color: '16777215',
+				color: lightBlue,
 				bgcolor: darkGrey,
 			},
 			steps: [
@@ -594,7 +598,7 @@ export function initPresets() {
 			style: {
 				text: `Played time\n$(generic-module:totalPlayedTime)`,
 				size: 11,
-				color: '16777215',
+				color: green,
 				bgcolor: darkGrey,
 			},
 			steps: [
@@ -634,7 +638,7 @@ export function initPresets() {
 			style: {
 				text: `Total duration\n$(generic-module:totalDuration)`,
 				size: 11,
-				color: '16777215',
+				color: red,
 				bgcolor: darkGrey,
 			},
 			steps: [

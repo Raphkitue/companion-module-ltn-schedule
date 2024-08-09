@@ -347,7 +347,10 @@ export function initFeedbacks() {
 			},
 			options: [],
 			callback: ({ options }) => {
-				if (this.data.playoutRunning && this.data.elementsStatuses[this.data.upcomingElementId] === UNAVAILABLE_STATUS) {
+				if (
+					this.data.playoutRunning &&
+					this.data.elementsStatuses[this.data.upcomingElementId] === UNAVAILABLE_STATUS
+				) {
 					return true
 				}
 			},
@@ -368,9 +371,9 @@ export function initFeedbacks() {
 					default: '1',
 					choices: [
 						{ id: '1', label: 'Insertion is running' },
-						{ id: '2', label: 'Insertion has failed'}
+						{ id: '2', label: 'Insertion has failed' },
 					],
-				}
+				},
 			],
 			callback: ({ options }) => {
 				if (String(this.data.templateInsertStatus) === options.insertStatus) {

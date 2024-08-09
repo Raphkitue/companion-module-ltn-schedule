@@ -101,7 +101,10 @@ export function initAPI() {
 				}
 				this.checkFeedbacks('overlayStatus', 'htmlOverlayStatus', 'breakingNewsStatus', 'breakingLiveLivestreamStatus')
 				this.updatePresets()
-			} else if ((message.messageId === 'statusUpdate' || message._messageId === 'statusUpdate') && this.data.apiVersion >= 7) {
+			} else if (
+				(message.messageId === 'statusUpdate' || message._messageId === 'statusUpdate') &&
+				this.data.apiVersion >= 7
+			) {
 				this.data.startstamp = message.startStamp
 				this.data.playlistLength = message.playoutListLengthMs
 				this.data.currentEndstamp = message.currentElementEnd
@@ -156,15 +159,17 @@ export function initAPI() {
 
 				this.checkFeedbacks('breakingNewsStatus', 'breakingLiveLivestreamStatus', 'breakingLiveBumperStatus')
 			} else if (message.messageId === 'ad_triggered' || message._messageId === 'ad_triggered') {
-				this.data.adRunning = message.adLength
-				if (this.adTimeout) {
-					clearTimeout(this.adTimeout)
-				}
-				this.adTimeout = setTimeout(() => {
-					this.data.adRunning = 0
+				if (this.data.apiVersion < 7 || message.adLength > this.data.adRunning + 1) {
+					this.data.adRunning = message.adLength
+					if (this.adTimeout) {
+						clearTimeout(this.adTimeout)
+					}
+					this.adTimeout = setTimeout(() => {
+						this.data.adRunning = 0
+						this.checkFeedbacks('adTriggerStatus')
+					}, message.adLength * 1000)
 					this.checkFeedbacks('adTriggerStatus')
-				}, message.adLength * 1000)
-				this.checkFeedbacks('adTriggerStatus')
+				}
 			} else if (
 				message.messageId === 'redundancy_status_change' ||
 				(message._messageId === 'redundancy_status_change' && this.data.apiVersion > 6)

@@ -48,12 +48,13 @@ To get a pair of credentials for the Schedule API, create a new user in the Sche
 
 ## Variables
 
-| Feedback                 | Description                                                   |
-|--------------------------|---------------------------------------------------------------|
-| **currentRemainingTime** | Shows a timer with the remaining time for the current element |
-| **totalPlayedTime**      | Shows a timer with the total played time of the rundown       |
-| **totalRemainingTime**   | Shows a timer with the total remaining time of the rundown    |
-| **totalDuration**        | Shows the total duration of the rundown                       |
+| Variable                 | Description                                                                                        |
+|--------------------------|----------------------------------------------------------------------------------------------------|
+| **currentRemainingTime** | Shows a timer with the remaining time for the current element                                      |
+| **totalPlayedTime**      | Shows a timer with the total played time of the rundown                                            |
+| **totalRemainingTime**   | Shows a timer with the total remaining time of the rundown                                         |
+| **totalDuration**        | Shows the total duration of the rundown                                                            |
+| **adRemainingTime**      | Shows a timer with the remaining time of the current longest ad break, or empty if none is running |
 
 ## Presets
 
