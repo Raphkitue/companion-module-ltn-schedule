@@ -103,7 +103,7 @@ export function initAPI() {
 				this.updatePresets()
 			} else if ((message.messageId === 'statusUpdate' || message._messageId === 'statusUpdate') && this.data.apiVersion >= 7) {
 				this.data.startstamp = message.startStamp
-				this.data.endstamp = message.playoutListLengthMs
+				this.data.playlistLength = message.playoutListLengthMs
 				this.data.currentEndstamp = message.currentElementEnd
 			} else if (message.messageId === 'playout_update' || message._messageId === 'playout_update') {
 				if (this.data.apiVersion > 0) {

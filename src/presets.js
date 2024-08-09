@@ -625,6 +625,26 @@ export function initPresets() {
 			],
 			feedbacks: [],
 		}
+
+		presets.total_duration = {
+			category: 'Timers',
+			type: 'button',
+			name: `Total Duration`,
+			options: {},
+			style: {
+				text: `Total duration\n$(generic-module:totalDuration)`,
+				size: 11,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		}
 	}
 
 	this.setPresetDefinitions(presets)

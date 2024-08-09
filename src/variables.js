@@ -3,6 +3,7 @@ export function updateVariableDefinitions() {
 		{ variableId: 'currentRemainingTime', name: 'Remaining time for the currently playing element' },
 		{ variableId: 'totalRemainingTime', name: 'Remaining time before rundown ends' },
 		{ variableId: 'totalPlayedTime', name: 'Played time of the rundown' },
+		{ variableId: 'totalDuration', name: 'Total duration of the rundown' },
 	]
 
 	this.setVariableDefinitions(variables)
@@ -12,9 +13,10 @@ export function updateVariables() {
 
 	const now = Date.now();
 	this.setVariableValues({
-		totalRemainingTime: msToTime((this.data.startstamp + this.data.endstamp) - now),
+		totalRemainingTime: msToTime((this.data.startstamp + this.data.playlistLength) - now),
 		totalPlayedTime: msToTime(now - this.data.startstamp),
-		currentRemainingTime: msToTime(this.data.currentEndstamp - now)
+		currentRemainingTime: msToTime(this.data.currentEndstamp - now),
+		totalDuration: msToTime(this.data.playlistLength)
 	})
 }
 

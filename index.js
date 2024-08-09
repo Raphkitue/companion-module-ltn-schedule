@@ -66,8 +66,8 @@ class LTNScheduleInstance extends InstanceBase {
 			syncStatus: 0,
 			bumperRunning: false,
 			startstamp: 0,
-			endstamp: 0,
-			currentEndstamp: 0
+			playlistLength: 0,
+			currentEndstamp: 0,
 		}
 	}
 
