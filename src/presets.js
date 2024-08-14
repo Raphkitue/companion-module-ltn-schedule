@@ -176,21 +176,14 @@ export function initPresets() {
 		feedbacks: skipFeedbacks,
 	}
 
-	var adName = 'Ad break'
-	var adFontSize = pstSize
-	if (this.data.apiVersion >= 7) {
-		adName = adName + '\n$(generic-module:adRemainingTime)'
-		adFontSize = 14
-	}
-
 	presets.trigger_ad = {
 		category: 'Commands',
 		type: 'button',
 		name: 'Trigger ad',
 		options: {},
 		style: {
-			text: adName,
-			size: adFontSize,
+			text: 'Ad break',
+			size: pstSize,
 			color: '16777215',
 			bgcolor: combineRgb(0, 0, 0),
 		},
@@ -618,7 +611,7 @@ export function initPresets() {
 			style: {
 				text: `Element time\n$(generic-module:currentRemainingTime)`,
 				size: 11,
-				color: '16777215',
+				color: red,
 				bgcolor: darkGrey,
 			},
 			steps: [
@@ -638,7 +631,27 @@ export function initPresets() {
 			style: {
 				text: `Total duration\n$(generic-module:totalDuration)`,
 				size: 11,
-				color: red,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: [],
+		}
+
+		presets.ad_remaining_time = {
+			category: 'Timers',
+			type: 'button',
+			name: `Ad break remaining time`,
+			options: {},
+			style: {
+				text: `$(generic-module:adRemainingTime)`,
+				size: pstSize,
+				color: '16777215',
 				bgcolor: darkGrey,
 			},
 			steps: [

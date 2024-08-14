@@ -18,7 +18,7 @@ export function updateVariables() {
 	var remainingAd = this.data.adRunning
 
 	if (remainingAd <= 0) {
-		remainingAd = ''
+		remainingAd = '0'
 	} else {
 		this.data.adRunning = this.data.adRunning - 1
 	}
