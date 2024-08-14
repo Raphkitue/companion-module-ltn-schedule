@@ -660,7 +660,17 @@ export function initPresets() {
 					up: [],
 				},
 			],
-			feedbacks: [],
+			feedbacks: [
+				{
+					feedbackId: 'adTriggerStatus',
+					options: {
+						fg: black,
+						bgDisabled: darkGrey,
+						bgEnabled: lightBlue,
+						bgPushing: green,
+					},
+				},
+			],
 		}
 	}
 
