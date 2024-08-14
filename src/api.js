@@ -159,7 +159,7 @@ export function initAPI() {
 
 				this.checkFeedbacks('breakingNewsStatus', 'breakingLiveLivestreamStatus', 'breakingLiveBumperStatus')
 			} else if (message.messageId === 'ad_triggered' || message._messageId === 'ad_triggered') {
-				if (this.data.apiVersion < 7 || message.adLength > this.data.adRunning + 1) {
+				if (this.data.apiVersion < 7 || message.adLength > this.data.adRunning + 1 || message.adLength == 0) {
 					this.data.adRunning = message.adLength
 					if (this.adTimeout) {
 						clearTimeout(this.adTimeout)

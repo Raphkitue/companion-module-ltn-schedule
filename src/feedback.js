@@ -214,8 +214,7 @@ export function initFeedbacks() {
 			if (this.data.adRunning != 0) {
 				return { color: options.fg, bgcolor: options.bgPushing }
 			} else if (
-				(this.data.currentItemType === 'livestream' || this.data.breakingNewsRunning || this.data.apiVersion > 3) &&
-				this.data.publishRunning
+				(this.data.currentItemType === 'livestream' || this.data.breakingNewsRunning || this.data.apiVersion > 3) && this.data.playoutRunning
 			) {
 				return { color: options.fg, bgcolor: options.bgEnabled }
 			} else {
