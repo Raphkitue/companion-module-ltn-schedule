@@ -35,8 +35,8 @@ export function updateVariables() {
 	} else {
 		this.setVariableValues({
 			totalRemainingTime: msToTime(this.data.startstamp + this.data.playlistLength - now),
-			totalPlayedTime: msToTime(now - this.data.startstamp),
-			currentRemainingTime: '00:00:00',
+			totalPlayedTime: msToTime(-1),
+			currentRemainingTime: msToTime(-1),
 			totalDuration: msToTime(this.data.playlistLength),
 			adRemainingTime: remainingAd,
 		})
