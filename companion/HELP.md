@@ -1,10 +1,17 @@
 # LTN Schedule
-LTN Schedule delivers simplified workflows for creating 24/7 linear programs from archived content and live elements, with ad management.
 
+LTN Schedule is part of LTN Lift, a solution for flexible broadcast workflows.
+It is an LTN-hosted playout solution that gives channel creators the modular tools to rapidly scale
+and uniquely reach cross-platform audiences more efficiently, driving greater revenue.
+LTN Lift simplifies mixing pre-recorded assets and live sources programming distributed across all
+digital platforms, including FAST. Increase subscribers while reducing churn.
+Deliver the right ad markers to the right platforms.
+More infos available on the LTN website: https://ltnglobal.com/
 
 ## Configuration
 
-To get a pair of credentials for the Schedule API, create a new user in the Schedule UI and assign the api user role to it. You can then use it to connect through this companion module.
+To get a pair of credentials for the Schedule API, create a new user in the Schedule UI and assign
+the api user role to it. You can then use it to connect through this companion module.
 
 | Setting          | Description                                                     |
 |------------------|-----------------------------------------------------------------|
@@ -13,6 +20,7 @@ To get a pair of credentials for the Schedule API, create a new user in the Sche
 | **API Password** | Enter the corresponding password.                               |
 
 ## Actions
+
 | Action                      | Description                                                                                                                                          |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Toggle playback running** | Starts/stops the playback without publishing (timestamp can be set like in the Schedule UI).                                                         |
@@ -30,6 +38,7 @@ To get a pair of credentials for the Schedule API, create a new user in the Sche
 | **Resync system**           | Attempts re-syncing with the redundant system                                                                                                        |
 
 ## Feedback available
+
 | Feedback                            | Description                                                                                          |
 |-------------------------------------|------------------------------------------------------------------------------------------------------|
 | **Playout running status**          | Shows whether the playback is running.                                                               |
