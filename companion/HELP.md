@@ -1,5 +1,8 @@
 # LTN Schedule
 
+LTN Schedule delivers simplified workflows for creating 24/7 linear programs from archived content
+and live elements, with ad management.
+
 LTN Schedule is part of LTN Lift, a solution for flexible broadcast workflows.
 It is an LTN-hosted playout solution that gives channel creators the modular tools to rapidly scale
 and uniquely reach cross-platform audiences more efficiently, driving greater revenue.
