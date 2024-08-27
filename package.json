@@ -12,7 +12,7 @@
 		"url": "git+https://github.com/bitfocus/companion-module-ltn-schedule.git"
 	},
 	"dependencies": {
-		"@companion-module/base": "~1.4.0",
+		"@companion-module/base": "~1.10.0",
 		"form-data": "^4.0.0",
 		"got": "^11.8.2",
 		"ws": "^7.5.10"

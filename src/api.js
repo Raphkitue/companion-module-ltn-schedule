@@ -72,7 +72,7 @@ export function initAPI() {
 					this.log('info', 'Api version: ' + this.data.apiVersion)
 					this.updateElements()
 				} else {
-					this.updateStatus('bad_config', 'Authentication failed')
+					this.updateStatus('authentication_failure', 'Authentication failed')
 				}
 			} else if (
 				(message.messageId === 'pushTargetUpdate' || message._messageId === 'pushTargetUpdate') &&
