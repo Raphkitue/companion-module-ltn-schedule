@@ -674,5 +674,92 @@ export function initPresets() {
 		}
 	}
 
+	if (this.data.apiVersion >= 8) {
+		presets.jump_to_id = {
+			category: 'Commands',
+			type: 'button',
+			name: `Jump to ID`,
+			options: {},
+			style: {
+				text: `Jump to ID`,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [{
+						actionId: 'jumpTo',
+						options: {
+							id: "id to fill",
+						},
+					}
+					],
+					up: [],
+				},
+			],
+			feedbacks: [
+				{
+					feedbackId: 'flexiblePlaybackStatus',
+					style: {
+						bgcolor: green,
+					},
+					options: {},
+				},
+				{
+					feedbackId: 'playedElementStatus',
+					style: {
+						bgcolor: red,
+					},
+					options: {
+						id: 'id to fill',
+					},
+				},
+			],
+		}
+
+		presets.jump_to_index = {
+			category: 'Commands',
+			type: 'button',
+			name: `Jump to Index`,
+			options: {},
+			style: {
+				text: `Jump to Index`,
+				size: pstSize,
+				color: '16777215',
+				bgcolor: darkGrey,
+			},
+			steps: [
+				{
+					down: [{
+						actionId: 'jumpTo',
+						options: {
+							index: '0',
+						},
+					}],
+					up: [],
+				},
+			],
+			feedbacks: [
+				{
+					feedbackId: 'flexiblePlaybackStatus',
+					style: {
+						bgcolor: green,
+					},
+					options: {},
+				},
+				{
+					feedbackId: 'playedElementStatus',
+					style: {
+						bgcolor: red,
+					},
+					options: {
+						index: '0',
+					},
+				},
+			],
+		}
+	}
+
 	this.setPresetDefinitions(presets)
 }

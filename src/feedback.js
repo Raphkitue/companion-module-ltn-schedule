@@ -441,5 +441,44 @@ export function initFeedbacks() {
 		}
 	}
 
+	if (this.data.apiVersion >= 8) {
+		feedbacks.playedElementStatus = {
+			type: 'boolean',
+			name: 'Element playing status',
+			description: 'Indicates if an element is currently running',
+			defaultStyle: {
+				bgcolor: red,
+			},
+			options: [
+				{
+					id: 'id',
+					type: 'textinput',
+					label: 'Element Id',
+				},
+				{
+					id: 'index',
+					type: 'number',
+					label: 'Element Index',
+				}
+			],
+			callback: ({ options }) => {
+				return (options.id && this.data.elementRunning === options.id) || (options.index && (this.data.elementRunningIndex + 1) === options.index)
+			},
+		}
+
+		feedbacks.flexiblePlaybackStatus = {
+			type: 'boolean',
+			name: 'Flexible playback status',
+			description: 'Indicates if the rundown is in flexible playback mode',
+			defaultStyle: {
+				bgcolor: green,
+			},
+			options: [],
+			callback: ({ options }) => {
+				return this.data.flexiblePlaybackEnabled
+			},
+		}
+	}
+
 	return feedbacks
 }

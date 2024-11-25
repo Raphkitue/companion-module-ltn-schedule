@@ -448,6 +448,39 @@ export function getActions() {
 		}
 	}
 
+	if (this.data.apiVersion >= 8) {
+		actions.jumpTo = {
+			name: 'Jump to an element',
+			options: [
+				{
+					id: 'id',
+					type: 'textinput',
+					label: 'Element Id',
+				},
+				{
+					id: 'index',
+					type: 'number',
+					label: 'Element Index',
+				}
+			],
+			callback: async (event) => {
+				var cmd
+				var apiEndpoint
+				var opt = event.options
+
+				apiEndpoint = 'playout/jump'
+				if (opt.id) {
+					cmd = '?id=' + opt.id
+				}
+				else {
+					cmd = '?index=' + opt.index
+				}
+
+				sendAction.bind(this)(apiEndpoint, cmd, null, null, 'POST')
+			},
+		}
+	}
+
 	return actions
 }
 

@@ -64,6 +64,8 @@ export function initAPI() {
 						this.data.apiVersion = 6
 					} else if (message.apiVersion === '7') {
 						this.data.apiVersion = 7
+					} else if (message.apiVersion === '8') {
+						this.data.apiVersion = 8
 					} else if (typeof message.apiVersion !== 'undefined') {
 						this.data.apiVersion = Number.parseInt(message.apiVersion)
 					} else {
@@ -98,6 +100,13 @@ export function initAPI() {
 					if (this.data.apiVersion < 7) {
 						this.data.breakingNewsCurrentId = message.playoutSettings.breakingLiveLivestreamId
 					}
+				}
+				this.log('info', 'Inhfo ?' + message.playoutSettings.flexiblePlaybackEnabled)
+
+				if (this.data.apiVersion >= 8)
+				{
+					this.data.flexiblePlaybackEnabled = message.playoutSettings.flexiblePlaybackEnabled
+					this.checkFeedbacks('flexiblePlaybackStatus')
 				}
 				this.checkFeedbacks('overlayStatus', 'htmlOverlayStatus', 'breakingNewsStatus', 'breakingLiveLivestreamStatus')
 				this.updatePresets()
@@ -141,7 +150,18 @@ export function initAPI() {
 					this.data.upcomingElementId = message.currentPlayoutItems.upcoming[0]
 					this.checkFeedbacks('nextElementCaching', 'nextElementUnavailable')
 				}
-				this.checkFeedbacks('playbackStatus', 'publishStatus', 'skippableStatus', 'adTriggerStatus', 'targetsStatus')
+				this.data.elementRunningIndex = message.playoutItemIndex
+				this.log('info', 'Ah: ' + message.currentPlayoutItems.current + ' ah2 ' + message.playoutItemIndex)
+				if (this.data.apiVersion >= 8 && message.currentPlayoutItems !== 'undefined')
+				{
+					this.data.elementRunning = message.currentPlayoutItems.current[0]
+				}
+				else
+				{
+					this.data.elementRunning = '';
+				}
+
+				this.checkFeedbacks('playbackStatus', 'publishStatus', 'skippableStatus', 'adTriggerStatus', 'targetsStatus', 'playedElementStatus')
 
 				if (this.data.apiVersion > 1) {
 					this.checkFeedbacks('breakingNewsStatus')

@@ -39,6 +39,7 @@ the api user role to it. You can then use it to connect through this companion m
 | **Insert template**         | Insert an existing template from the Schedule system                                                                                                 |
 | **Cancel bumper**           | Cancels the currently-running bumper if there is one                                                                                                 |
 | **Resync system**           | Attempts re-syncing with the redundant system                                                                                                        |
+| **Jump to element**         | Jump to an element by ID or Index in the rundown                                                                                                     |
 
 ## Feedback available
 
@@ -57,6 +58,8 @@ the api user role to it. You can then use it to connect through this companion m
 | **Template insertion status**       | Shows if the insertion of a template is running or has failed                                        |
 | **Breaking live bumper status**     | Shows if a breaking live bumper is currently running or not                                          |
 | **Redundant system sync status**    | Shows the current status of the redundancy system                                                    |
+| **Element playing status**          | Shows if an element is playing (by ID)                                                               |
+| **Flexible playback status**        | Shows if flexible playback mode is activated                                                         |
 
 ## Variables
 
@@ -75,3 +78,4 @@ the api user role to it. You can then use it to connect through this companion m
 - Presets for playback actions (toggle playback, publish, overlays, hold) are created
 - A preset for template insertion is created
 - Presets for current status timers are created
+- A preset for jumping to an element by ID and by Index
