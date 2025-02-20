@@ -3,7 +3,7 @@
 	"name": "ltn-schedule",
 	"shortname": "Schedule",
 	"description": "LTN Global Schedule module for Companion",
-	"version": "2.3.0",
+	"version": "2.3.1",
 	"license": "MIT",
 	"repository": "git+https://github.com/bitfocus/companion-module-ltn-schedule.git",
 	"bugs": "https://github.com/bitfocus/companion-module-ltn-schedule/issues",
