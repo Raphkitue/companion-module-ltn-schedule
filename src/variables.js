@@ -5,6 +5,9 @@ export function updateVariableDefinitions() {
 		{ variableId: 'totalPlayedTime', name: 'Played time of the rundown' },
 		{ variableId: 'totalDuration', name: 'Total duration of the rundown' },
 		{ variableId: 'adRemainingTime', name: 'Remaining time for the currently playing ad break' },
+		{ variableId: 'elementRunning', name: 'ID of the current running element' },
+		{ variableId: 'elementRunningIndex', name: 'Index of the current running element' }
+		
 	]
 
 	this.setVariableDefinitions(variables)
@@ -31,6 +34,8 @@ export function updateVariables() {
 			currentRemainingTime: msToTime(this.data.currentEndstamp - now),
 			totalDuration: msToTime(this.data.playlistLength),
 			adRemainingTime: remainingAd,
+			elementRunning: this.data.elementRunning || '',
+			elementRunningIndex: this.data.elementRunningIndex || 0,
 		})
 	} else {
 		this.setVariableValues({
@@ -39,6 +44,8 @@ export function updateVariables() {
 			currentRemainingTime: msToTime(-1),
 			totalDuration: msToTime(this.data.playlistLength),
 			adRemainingTime: remainingAd,
+			elementRunning: '',
+			elementRunningIndex: 0,
 		})
 	}
 }
