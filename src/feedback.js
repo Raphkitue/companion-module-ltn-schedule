@@ -493,5 +493,31 @@ export function initFeedbacks() {
 		}
 	}
 
-	return feedbacks
+	if (this.data.apiVersion >= 8) {
+
+		const graphics =	{
+			type: 'dropdown',
+			label: 'Graphics rundown',
+			id: 'graphicsRundownSelect',
+			tooltip: 'What graphics element do you want to track?',
+			default: 'select',
+			choices: this.data.graphicsRundown.concat({ id: 'select', label: 'Select an element' }),
+		}
+
+		feedbacks.graphicsStatus = {
+			type: 'boolean',
+			name: 'Graphics element on air status',
+			description: 'Indicates if an element from the graphics is currently on air',
+			defaultStyle: {
+				bgcolor: red,
+			},
+			options: [graphics],
+			callback: ({ options }) => {
+				const found = this.data.graphicsRundown.find(obj => obj.id === options.graphicsRundownSelect);
+				return (found.status === true)
+			},
+		}
+	}
+
+		return feedbacks
 }

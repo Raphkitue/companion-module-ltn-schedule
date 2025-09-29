@@ -76,6 +76,13 @@ class LTNScheduleInstance extends InstanceBase {
 			outputScalingEnabled: false,
 			elementRunning: '',
 			elementRunningIndex: -1,
+			graphicsRundown: [
+				{
+					id: 'fill',
+					label: 'fill',
+					status: false,
+				},
+			]
 		}
 	}
 
