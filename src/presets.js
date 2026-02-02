@@ -762,6 +762,54 @@ export function initPresets() {
 		}
 	}
 
+	if(this.data.apiVersion >= 9)
+	{
+		this.data.graphicsRundown
+			.map((element) => {
+			return {
+				id: element.id,
+				type: 'button',
+				category: 'Graphics',
+				name: element.label,
+				options: {},
+				style: {
+					text: element.label,
+					size: pstSize,
+					color: '16777215',
+					bgcolor: combineRgb(0, 0, 0),
+				},
+				steps: [
+					{
+						down: [
+							{
+								actionId: 'setGraphicsLayer',
+								options: {
+									rundownElement: [element.id],
+									status: 'toggle'
+								},
+							},
+						],
+						up: [],
+					},
+				],
+				feedbacks: [
+					{
+						feedbackId: 'graphicsStatus',
+						style: {
+							bgcolor: red,
+						},
+						options: {
+							graphicsRundownSelect: element.id
+						},
+					},
+				],
+			}
+		})
+			.forEach((element) => {
+			presets["graphics-rundown-" + element.id] = element
+		})
+	}
+
 	this.setPresetDefinitions(presets)
 
 

@@ -549,7 +549,82 @@ export function getActions() {
     }
 	}
 
-	return actions
+	if (this.data.apiVersion >= 9)
+  {
+    actions.setGraphicsLayer = {
+      name: 'Set graphics layer status',
+      options: [
+        {
+          type: 'dropdown',
+          label: 'Graphics rundown element',
+          id: 'rundownElement',
+          tooltip: 'What graphics element do you want to modify?',
+          default: 'select',
+          choices: this.data.graphicsRundown.concat({ id: 'select', label: 'Select an element' }),
+        },
+        {
+          type: 'dropdown',
+          label: 'Status',
+          id: 'status',
+          tooltip: 'What is the desired status?',
+          default: 'toggle',
+          choices: [
+            {
+              id: 'toggle',
+              label: 'Toggle status',
+            },
+            {
+              id: 'start',
+              label: 'Start',
+            },
+            {
+              id: 'stop',
+              label: 'Stop',
+            },
+          ],
+        },
+      ],
+      callback: async (event) => {
+        let cmd
+        let apiEndpoint = 'graphics/layer'
+				let opt = event.options
+
+        cmd = '?index=' + opt.rundownElement
+        if (opt.status === 'start') {
+          cmd += '&status=true'
+        } else if (opt.status === 'stop'){
+          cmd += '&status=false'
+        }
+
+        sendAction.bind(this)(apiEndpoint, cmd, null, null, 'GET')
+      },
+    }
+
+    actions.stopAllGraphics = {
+      name: 'Stop all graphics layers',
+      options: [],
+      callback: async (event) => {
+        let cmd
+        let apiEndpoint = 'graphics/stopAll'
+
+        sendAction.bind(this)(apiEndpoint, cmd, null, null, 'GET')
+      },
+    }
+
+    actions.startAllGraphics = {
+      name: 'Start all graphics layers',
+      options: [],
+      callback: async (event) => {
+        let cmd
+        let apiEndpoint = 'graphics/startAll'
+
+        sendAction.bind(this)(apiEndpoint, cmd, null, null, 'GET')
+      },
+    }
+	}
+
+
+		return actions
 }
 
 function sendAction(apiEndpoint, cmd, callback, errorCallback, requestType) {

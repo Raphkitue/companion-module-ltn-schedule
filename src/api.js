@@ -66,6 +66,8 @@ export function initAPI() {
 						this.data.apiVersion = 7
 					} else if (message.apiVersion === '8') {
 						this.data.apiVersion = 8
+					} else if (message.apiVersion === '9') {
+						this.data.apiVersion = 9
 					} else if (typeof message.apiVersion !== 'undefined') {
 						this.data.apiVersion = Number.parseInt(message.apiVersion)
 					} else {
@@ -230,6 +232,25 @@ export function initAPI() {
 					this.data.elementsStatuses[statusInfo.playlistId] = statusInfo.livestreamInfo.livestreamStatus
 				})
 				this.checkFeedbacks('nextElementCaching', 'nextElementUnavailable')
+			} else if (message.messageId === 'graphics_status_get')
+			{
+
+				if (this.data.apiVersion >= 9) {
+					this.data.graphicsRundown = []
+
+					message.graphicsStatus.forEach((graphicsTemplate) => {
+						let localTemplate = {}
+						localTemplate.id = (graphicsTemplate.index + 1).toString()
+						localTemplate.status = graphicsTemplate.active
+						localTemplate.label = graphicsTemplate.name
+						this.data.graphicsRundown.push(localTemplate)
+					})
+					this.actions()
+					this.init_feedbacks()
+					this.updatePresets()
+					this.checkFeedbacks('graphicsStatus')
+				}
+
 			}
 		})
 
