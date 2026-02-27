@@ -630,7 +630,7 @@ export function getActions() {
 function sendAction(apiEndpoint, cmd, callback, errorCallback, requestType) {
 	if (typeof cmd !== 'undefined' && typeof apiEndpoint !== 'undefined') {
 		let requestString =
-			`https://${this.config.usernameParsed}:${this.config.passwordParsed}@${this.config.hostParsed}/api/v1/${apiEndpoint}` + cmd
+			`https://${this.config.username}:${this.config.password}@${this.config.host}/api/v1/${apiEndpoint}` + cmd
 		this.log('info', `request ${requestString}`)
 		let req
 		if (requestType === 'POST') {

@@ -13,7 +13,7 @@ export function initAPI() {
 		try {
 			// readyState 2 = CLOSING, readyState 3 = CLOSED
 			if (!ws || ws.readyState == 2 || ws.readyState == 3) {
-				if (this.config.hostParsed && this.config.hostParsed !== '') {
+				if (this.config.host && this.config.host !== '') {
 					startListeningSocket()
 				}
 			}
@@ -30,7 +30,7 @@ export function initAPI() {
 	 * Create a WebSocket connection for retrieving updates
 	 */
 	const startListeningSocket = () => {
-		const url = 'wss://' + this.config.hostParsed + '/ws_admin'
+		const url = 'wss://' + this.config.host + '/ws_admin'
 		this.socket = new WebSocket(url, 'apisocket')
 		const ws = this.socket
 		this.socket.on('open', () => {

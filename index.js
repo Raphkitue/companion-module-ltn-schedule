@@ -92,9 +92,6 @@ class LTNScheduleInstance extends InstanceBase {
 		this.config.host = config.host || ''
 		this.config.username = config.username
 		this.config.password = config.password
-		this.config.hostParsed = await this.parseVariablesInString(config.host) || ''
-		this.config.usernameParsed = await this.parseVariablesInString(config.username)
-		this.config.passwordParsed = await this.parseVariablesInString(config.password)
 
 		if (this.config.host === '') {
 			this.updateStatus('bad_config', 'Configuration required')
@@ -119,9 +116,6 @@ class LTNScheduleInstance extends InstanceBase {
 		this.config.host = config.host || ''
 		this.config.username = config.username
 		this.config.password = config.password
-		this.config.hostParsed = await this.parseVariablesInString(config.host) || ''
-		this.config.usernameParsed = await this.parseVariablesInString(config.username)
-		this.config.passwordParsed = await this.parseVariablesInString(config.password)
 
 		initAPI.bind(this)()
 		this.actions()
