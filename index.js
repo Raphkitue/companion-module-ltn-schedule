@@ -117,9 +117,17 @@ class LTNScheduleInstance extends InstanceBase {
 		this.config.username = config.username
 		this.config.password = config.password
 
+		if (this.variableUpdates) {
+			clearInterval(this.variableUpdates)
+			delete this.variableUpdates
+		}
+
 		initAPI.bind(this)()
 		this.actions()
 		this.init_feedbacks()
+		updateVariableDefinitions.bind(this)()
+		updateVariables.bind(this)()
+		this.variableUpdates = setInterval(updateVariables.bind(this), 1000)
 		initPresets.bind(this)()
 	}
 

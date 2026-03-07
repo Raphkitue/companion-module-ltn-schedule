@@ -259,7 +259,7 @@ export function initAPI() {
 		})
 
 		this.socket.on('onerror', (err) => {
-			this.updateStatusstatus('unknown_error', err)
+			this.updateStatus('unknown_error', err)
 			this.log('info', 'Schedule Websocket API err:' + JSON.stringify(err))
 		})
 	}
