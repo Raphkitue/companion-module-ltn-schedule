@@ -1,6 +1,6 @@
 {
 	"name": "ltn-schedule",
-	"version": "2.5.2",
+	"version": "2.5.3",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
