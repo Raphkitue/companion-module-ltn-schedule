@@ -625,7 +625,7 @@ export function getActions() {
 
 	actions.reconfigure_connection = {
 		name: 'Reconfigure connection',
-		description: 'Change the currenct connection configuration to connect to a different instance of Schedule and/or with different credentials',
+		description: 'Change the current connection configuration to connect to a different instance of Schedule and/or with different credentials',
 		options: [
 			{
 				type: 'textinput',
@@ -654,9 +654,17 @@ export function getActions() {
 		],
 		callback: async (event) => {
 			const opt = event.options
-			const newHost = await this.parseVariablesInString(opt.newHost)
-			const newUsername = await this.parseVariablesInString(opt.newUsername)
-			const newPassword = await this.parseVariablesInString(opt.newPassword)
+			
+			let newHost = opt.newHost
+			let newUsername = opt.newUsername
+			let newPassword = opt.newPassword
+
+			// compatibility with API 1.14 and below
+			if (typeof this.parseVariablesInString === 'function') {
+				newHost = await this.parseVariablesInString(newHost)
+				newUsername = await this.parseVariablesInString(newUsername)
+				newPassword = await this.parseVariablesInString(newPassword)
+			}
 
 			if (newHost !== '') this.config.host = newHost
 			if (newUsername !== '') this.config.username = newUsername
