@@ -44,6 +44,7 @@ the api user role to it. You can then use it to connect through this companion m
 | **Change graphics layer**   | Activate, deactivate or toggler a graphics engine rundown element                                                                                    |
 | **Stop graphics**           | Stop all graphics engine layers                                                                                                                      |
 | **Start graphics**          | Start all graphics engine layers                                                                                                                     |
+| **Reconfigure connection**  | Update the module connection configuration to switch to a different Schedule instance / credentials                                                  |
 
 ## Feedback available
 
