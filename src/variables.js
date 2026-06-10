@@ -3,11 +3,13 @@ export function updateVariableDefinitions() {
 		{ variableId: 'currentRemainingTime', name: 'Remaining time for the currently playing element' },
 		{ variableId: 'totalRemainingTime', name: 'Remaining time before rundown ends' },
 		{ variableId: 'totalPlayedTime', name: 'Played time of the rundown' },
-		{ variableId: 'totalDuration', name: 'Total duration of the rundown' },
-		{ variableId: 'adRemainingTime', name: 'Remaining time for the currently playing ad break' },
-		{ variableId: 'elementRunning', name: 'ID of the current running element' },
-		{ variableId: 'elementRunningIndex', name: 'Index of the current running element' }
-		
+    { variableId: 'totalDuration', name: 'Total duration of the rundown' },
+    { variableId: 'adRemainingTime', name: 'Remaining time for the currently playing ad break' },
+    { variableId: 'elementRunning', name: 'ID of the current running element' },
+    { variableId: 'elementRunningIndex', name: 'Index of the current running element' },
+    { variableId: 'currentPlayedTime', name: 'Played time of the current playing element' },
+    { variableId: 'upNextRemainingTime', name: 'Remaining time before next element starts' }
+
 	]
 
 	this.setVariableDefinitions(variables)
@@ -33,20 +35,24 @@ export function updateVariables() {
 			totalPlayedTime: msToTime(now - this.data.startstamp),
 			currentRemainingTime: msToTime(this.data.currentEndstamp - now),
 			totalDuration: msToTime(this.data.playlistLength),
-			adRemainingTime: remainingAd,
-			elementRunning: this.data.elementRunning,
-			elementRunningIndex: this.data.elementRunningIndex,
-		})
+      adRemainingTime: remainingAd,
+      elementRunning: this.data.elementRunning,
+      elementRunningIndex: this.data.elementRunningIndex,
+      currentPlayedTime: msToTime(now - this.data.currentStartstamp),
+      upNextRemainingTime: msToTime(this.data.nextStartstamp - now),
+    })
 	} else {
 		this.setVariableValues({
 			totalRemainingTime: msToTime(this.data.startstamp + this.data.playlistLength - now),
 			totalPlayedTime: msToTime(-1),
 			currentRemainingTime: msToTime(-1),
 			totalDuration: msToTime(this.data.playlistLength),
-			adRemainingTime: remainingAd,
-			elementRunning: '',
-			elementRunningIndex: 0,
-		})
+      adRemainingTime: remainingAd,
+      elementRunning: '',
+      elementRunningIndex: 0,
+      currentPlayedTime: msToTime(-1),
+      upNextRemainingTime: msToTime(-1),
+    })
 	}
 }
 

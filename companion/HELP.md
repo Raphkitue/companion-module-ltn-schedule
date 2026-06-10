@@ -44,7 +44,6 @@ the api user role to it. You can then use it to connect through this companion m
 | **Change graphics layer**   | Activate, deactivate or toggler a graphics engine rundown element                                                                                    |
 | **Stop graphics**           | Stop all graphics engine layers                                                                                                                      |
 | **Start graphics**          | Start all graphics engine layers                                                                                                                     |
-| **Clear graphics**          | Clears the graphics engine                                                                                                                           |
 | **Reconfigure connection**  | Update the module connection configuration to switch to a different Schedule instance / credentials                                                  |
 
 ## Feedback available
@@ -80,6 +79,8 @@ the api user role to it. You can then use it to connect through this companion m
 | **adRemainingTime**      | Shows a timer with the remaining time of the current longest ad break, or empty if none is running |
 | **elementRunning**       | Shows the ID of the current element running                                                        |
 | **elementRunningIndex**  | Shows the index of the current element running                                                     |
+| **currentPlayedTime**    | Shows the played time of the current element                                                       |
+| **upNextRemainingTime**  | Shows the remaining time before the next element                                                   |
 
 ## Presets
 
@@ -87,6 +88,6 @@ the api user role to it. You can then use it to connect through this companion m
 - A preset for each existing push target on the Schedule system is created.
 - Presets for playback actions (toggle playback, publish, overlays, hold) are created
 - A preset for template insertion is created
-- Presets for current status timers are created
+- Presets for variable timers are created
 - A preset for jumping to an element
 - A preset for output scaling button

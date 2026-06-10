@@ -810,6 +810,49 @@ export function initPresets() {
 		})
 	}
 
+  if(this.data.apiVersion >= 10)
+  {
+    presets.current_played_time = {
+      category: 'Timers',
+      type: 'button',
+      name: `Current Element Played Time`,
+      options: {},
+      style: {
+        text: `Current played time\n$(generic-module:currentPlayedTime)`,
+        size: 11,
+        color: lightBlue,
+        bgcolor: darkGrey,
+      },
+      steps: [
+        {
+          down: [],
+          up: [],
+        },
+      ],
+      feedbacks: [],
+    }
+
+    presets.next_element_remaining_time = {
+      category: 'Timers',
+      type: 'button',
+      name: `Next Element in`,
+      options: {},
+      style: {
+        text: `Next in\n$(generic-module:upNextRemainingTime)`,
+        size: 11,
+        color: lightBlue,
+        bgcolor: darkGrey,
+      },
+      steps: [
+        {
+          down: [],
+          up: [],
+        },
+      ],
+      feedbacks: [],
+    }
+  }
+
 	this.setPresetDefinitions(presets)
 
 
