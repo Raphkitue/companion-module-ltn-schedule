@@ -80,7 +80,6 @@ the api user role to it. You can then use it to connect through this companion m
 | **elementRunning**       | Shows the ID of the current element running                                                        |
 | **elementRunningIndex**  | Shows the index of the current element running                                                     |
 | **currentPlayedTime**    | Shows the played time of the current element                                                       |
-| **upNextRemainingTime**  | Shows the remaining time before the next element                                                   |
 
 ## Presets
 

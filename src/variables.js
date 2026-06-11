@@ -8,7 +8,6 @@ export function updateVariableDefinitions() {
     { variableId: 'elementRunning', name: 'ID of the current running element' },
     { variableId: 'elementRunningIndex', name: 'Index of the current running element' },
     { variableId: 'currentPlayedTime', name: 'Played time of the current playing element' },
-    { variableId: 'upNextRemainingTime', name: 'Remaining time before next element starts' }
 
 	]
 
@@ -39,7 +38,6 @@ export function updateVariables() {
       elementRunning: this.data.elementRunning,
       elementRunningIndex: this.data.elementRunningIndex,
       currentPlayedTime: msToTime(now - this.data.currentStartstamp),
-      upNextRemainingTime: msToTime(this.data.nextStartstamp - now),
     })
 	} else {
 		this.setVariableValues({
@@ -51,7 +49,6 @@ export function updateVariables() {
       elementRunning: '',
       elementRunningIndex: 0,
       currentPlayedTime: msToTime(-1),
-      upNextRemainingTime: msToTime(-1),
     })
 	}
 }

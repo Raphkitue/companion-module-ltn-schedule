@@ -122,8 +122,7 @@ export function initAPI() {
           this.data.currentEndstamp = message.currentElementEnd
         }
         if(this.data.apiVersion >= 10) {
-				this.data.currentStartstamp = message.currentElementStart
-				this.data.upNextRemainingTime = message.nextElementStart
+          this.data.currentStartstamp = message.currentElementStart
         }
 			} else if (message.messageId === 'playout_update' || message._messageId === 'playout_update') {
 				if (this.data.apiVersion > 0) {
